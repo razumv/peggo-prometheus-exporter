@@ -68,4 +68,4 @@ peggo_pending_batches -- Pending batches
    
 Metrics can be used to generate alerts or display in Grafana. A sample Grafana dashboard will be added soon. 
 
-# Disclaimer - This code is provided as reference. Code should be considered beta and provided as reference. The material and information contained on this blog/website are for general information purposes only. You should not rely on the content or information on the website as a basis for making any business, legal or any other decisions.  
+Disclaimer - This code is provided as reference. Code should be considered beta and provided as reference. The material and information contained on this blog/website are for general information purposes only. You should not rely on the content or information on the website as a basis for making any business, legal or any other decisions.  
