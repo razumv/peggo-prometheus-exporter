@@ -5,6 +5,7 @@ Developed by Architect Nodes :)
 
 import os
 import time
+import prometheus_client
 from prometheus_client import start_http_server, Gauge, Enum
 import requests
 import json
@@ -36,6 +37,10 @@ handler.setFormatter(formatter)
 handler.setLevel(log_level)
 #add StreamHandler to Logger
 logger.addHandler(handler)
+
+prometheus_client.REGISTRY.unregister(prometheus_client.GC_COLLECTOR)
+prometheus_client.REGISTRY.unregister(prometheus_client.PLATFORM_COLLECTOR)
+prometheus_client.REGISTRY.unregister(prometheus_client.PROCESS_COLLECTOR)
 
 class PeggoMetrics:
     """
