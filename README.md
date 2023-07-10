@@ -26,44 +26,63 @@ Exporter can be started with following command:
 **python3 peggo_exporter.py**
 
 # Systemd service
+
 Sample Systemd file (name - peggo_exporter.service)
+
 [Unit]
+
 Description=Peggo Exporter
+
 After=network.target
 
 [Service]
+
 User=USER
+
 ExecStart=python3 /Location/of/peggo_exporter/peggo_exporter.py 
 
 Restart=always
+
 RestartSec=10
+
 LimitNOFILE=1000
 
 [Install]
+
 WantedBy=multi-user.target
 
-Commands to load the file and start exporter as systemd service
+**Commands to load the file and start exporter as systemd service**:
+
 sudo systemctl daemon-reload
+
 sudo systemctl restart peggo_exporter.service
 
-Command to check peggo_exporter logs
+**Command to check peggo_exporter logs**:
+
 sudo journalctl -u peggo_exporter.service -f
 
 # Metrics information
-peggo_api_status -- 
+**peggo_api_status** -- 
 Value         Description
 1       -     if API is available and Node is synced
 0       -     if API is not availeble or node is syncing
 
-peggo_last_observed_nonce -- Last Observed Peggo Nonce
-peggo_last_claim_eth_event_nonce -- Latest Orchestrator Nonce
-peggo_pending_valsets -- Pending valsets count
-peggo_pending_batches -- Pending batches
+**peggo_last_observed_nonce** -- Last Observed Peggo Nonce
 
-# Prometheus config:
-  - job_name: 'Peggo_Exporter'
+**peggo_last_claim_eth_event_nonce** -- Latest Orchestrator Nonce
+
+**peggo_pending_valsets** -- Pending valsets count
+
+**peggo_pending_batches** -- Pending batches
+
+# Prometheus config:       
+
+- job_name: 'Peggo_Exporter'
+  
     scrape_interval: 60s
+
     static_configs:
+
       - targets: ['127.0.0.1:9877']  # Set IP location to point to peggo_exporter server
    
 Metrics can be used to generate alerts or display in Grafana. A sample Grafana dashboard will be added soon. 
