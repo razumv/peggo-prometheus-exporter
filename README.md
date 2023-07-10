@@ -4,7 +4,7 @@
 Download peggo_exporter.py and place it on your server. 
 
 # Pre Requisites
-Programs was tested with python3 on Ubuntu 22.04. 
+Program was tested with python3 on Ubuntu 22.04. 
 - Confirm you have python installed
 - Import required Python packages (instructions for Ubuntu provided below):
   - pip install prometheus-client
