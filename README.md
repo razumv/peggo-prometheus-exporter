@@ -88,3 +88,13 @@ Value         Description
 Metrics can be used to generate alerts or display in Grafana. A sample Grafana dashboard will be added soon. 
 
 Disclaimer - This code is provided as reference. Code should be considered beta and provided as reference. The material and information contained on this blog/website are for general information purposes only. You should not rely on the content or information on the website as a basis for making any business, legal or any other decisions.  
+
+# Grafana dashboard
+Download or copy contents of [grafana_peggo_exporter.json](https://github.com/social244305-Architect/peggo-prometheus-exporter/blob/main/grafana_peggo_exporter.json). In Grafana, click Dashboards in the left-side menu, select import and copy contents of grafana_peggo_exporter.json in "Import via panel json" section. Click load. Select Prometheus as datasource and click import.
+
+**Dashboard example**
+
+<img width="1279" alt="Screen Shot 2023-07-10 at 7 30 37 PM" src="https://github.com/social244305-Architect/peggo-prometheus-exporter/assets/109033531/796351fd-f060-4598-8a15-b3cb8a3a0a27">
+
+
+
