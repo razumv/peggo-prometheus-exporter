@@ -75,10 +75,10 @@ WantedBy=multi-user.target
 `sudo journalctl -u peggo_exporter.service -f -o cat`
 
 # Metrics information
-**peggo_api_status** -- 
-Value         Description
-1       -     if API is available and Node is synced
-0       -     if API is not availeble or node is syncing
+**peggo_api_status** --  
+
+"1" --  if API is available and Node is synced  
+"0" --  if API is not availeble or node is syncing  
 
 **peggo_last_observed_nonce** -- Last Observed Peggo Nonce
 
