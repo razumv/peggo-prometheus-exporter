@@ -31,7 +31,7 @@ Required Params -
 
 Optional Params -
   - `set_exporter_port` -- Port to open HTTP server for Prometheus. Default Port - 9877
-  - `et_polling_interval_seconds` -- Refresh interval for metrics. Default - 60sec
+  - `set_polling_interval_seconds` -- Refresh interval for metrics. Default - 60sec
   - `log_level` -- Log level for exporter. Possible values - INFO, DEBUG, ERROR. Default - INFO
 
 Exporter can be started with following command:
@@ -43,7 +43,7 @@ python3 peggo_exporter.py
 
 Sample Systemd service file (name - peggo_exporter.service)
 ```bash
-sudo nano /etc/systemd/system/peggo_exporter.py
+sudo nano /etc/systemd/system/peggo_exporter.service
 ```
 
 ```bash
