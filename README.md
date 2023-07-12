@@ -1,65 +1,78 @@
 # peggo-prometheus-exporter
 
 # Installation
-Download peggo_exporter.py and place it on your server. 
+Download peggo_exporter.py and place it on your server.
+
+```bash
+mkdir $HOME/peggo_exporter
+wget -O $HOME/peggo_exporter/peggo_exporter.py https://raw.githubusercontent.com/social244305-Architect/peggo-prometheus-exporter/main/peggo_exporter.py
+```
 
 # Pre Requisites
 Program was tested with python3 on Ubuntu 22.04. 
 - Confirm you have python installed
+  ```bash
+  python3 -V
+  # expected output Python 3.x.x
+  Python 3.8.10
+  ```
 - Import required Python packages (instructions for Ubuntu provided below):
-  - pip install prometheus-client
-  - python3 -m pip install requests
+  ```bash
+  pip install prometheus-client
+  python3 -m pip install requests
+  ```
 
 # Usage
-Open peggo_exporter.py in editor and configure required params:
+Open `peggo_exporter.py` in editor and configure required params:
 
 Required Params - 
-  - set_api_url -- Provide URL for your Injective API Node (API URL or http(s)://IP:PORT)
-  - set_orchestrator_address -- Injective Orchestrator address for your validator
+  - `set_api_url` -- Provide URL for your Injective API Node (API URL or http(s)://IP:PORT)
+  - `set_orchestrator_address` -- Injective Orchestrator address for your validator
 
 Optional Params -
-  - set_exporter_port -- Port to open HTTP server for Prometheus. Default Port - 9877
-  - set_polling_interval_seconds -- Refresh interval for metrics. Default - 60sec
-  - log_level -- Log level for exporter. Possible values - INFO, DEBUG, ERROR. Default - INFO
+  - `set_exporter_port` -- Port to open HTTP server for Prometheus. Default Port - 9877
+  - `et_polling_interval_seconds` -- Refresh interval for metrics. Default - 60sec
+  - `log_level` -- Log level for exporter. Possible values - INFO, DEBUG, ERROR. Default - INFO
 
 Exporter can be started with following command:
-**python3 peggo_exporter.py**
+```bash
+python3 peggo_exporter.py
+```
 
 # Systemd service
 
-Sample Systemd file (name - peggo_exporter.service)
+Sample Systemd service file (name - peggo_exporter.service)
+```bash
+sudo nano /etc/systemd/system/peggo_exporter.py
+```
 
+```bash
 [Unit]
-
 Description=Peggo Exporter
-
 After=network.target
 
 [Service]
-
-User=USER
-
-ExecStart=python3 /Location/of/peggo_exporter/peggo_exporter.py 
-
+User=<USER>
+ExecStart=python3 /home/<USER>/peggo_exporter/peggo_exporter.py 
 Restart=always
-
 RestartSec=10
-
 LimitNOFILE=1000
 
 [Install]
-
 WantedBy=multi-user.target
+```
 
 **Commands to load the file and start exporter as systemd service**:
 
-sudo systemctl daemon-reload
+`sudo systemctl daemon-reload`
 
-sudo systemctl restart peggo_exporter.service
+`sudo systemctl enable peggo_exporter.service --now`
+
+`sudo systemctl restart peggo_exporter.service`
 
 **Command to check peggo_exporter logs**:
 
-sudo journalctl -u peggo_exporter.service -f
+`sudo journalctl -u peggo_exporter.service -f -o cat`
 
 # Metrics information
 **peggo_api_status** -- 
@@ -85,7 +98,7 @@ Value         Description
 
       - targets: ['127.0.0.1:9877']  # Set IP location to point to peggo_exporter server
    
-Metrics can be used to generate alerts or display in Grafana. A sample Grafana dashboard will be added soon. 
+Metrics can be used to generate alerts or display in Grafana.
 
 Disclaimer - This code is provided as reference. Code should be considered beta and provided as reference. The material and information contained on this blog/website are for general information purposes only. You should not rely on the content or information on the website as a basis for making any business, legal or any other decisions.  
 
