@@ -42,6 +42,7 @@ python3 peggo_exporter.py
 # Systemd service
 
 Sample Systemd service file (name - peggo_exporter.service)
+
 ```bash
 sudo tee  /etc/systemd/system/peggo_exporter.service /dev/null <<EOF
 [Unit]
@@ -52,7 +53,7 @@ After=network.target
 User=$USER
 ExecStart=python3 $HOME/peggo_exporter/peggo_exporter.py 
 Restart=always
-RestartSec=10
+RestartSec=5
 LimitNOFILE=1000
 
 [Install]
