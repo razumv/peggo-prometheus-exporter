@@ -43,23 +43,21 @@ python3 peggo_exporter.py
 
 Sample Systemd service file (name - peggo_exporter.service)
 ```bash
-sudo nano /etc/systemd/system/peggo_exporter.service
-```
-
-```bash
+sudo tee  /etc/systemd/system/peggo_exporter.service /dev/null <<EOF
 [Unit]
 Description=Peggo Exporter
 After=network.target
 
 [Service]
-User=<USER>
-ExecStart=python3 /home/<USER>/peggo_exporter/peggo_exporter.py 
+User=$USER
+ExecStart=python3 $HOME/peggo_exporter/peggo_exporter.py 
 Restart=always
 RestartSec=10
 LimitNOFILE=1000
 
 [Install]
 WantedBy=multi-user.target
+EOF
 ```
 
 **Commands to load the file and start exporter as systemd service**:
@@ -104,7 +102,7 @@ Download or copy contents of [grafana_peggo_exporter.json](https://github.com/so
 **Dashboard example**
 
 <img width="1279" alt="Screen Shot 2023-07-10 at 7 30 37 PM" src="https://github.com/social244305-Architect/peggo-prometheus-exporter/assets/109033531/796351fd-f060-4598-8a15-b3cb8a3a0a27">
-
-
+  
+  
 Disclaimer - This code is provided as reference. Code should be considered beta and provided as reference. The material and information contained on this blog/website are for general information purposes only. You should not rely on the content or information on the website as a basis for making any business, legal or any other decisions. 
 
